@@ -32,10 +32,10 @@ initialise_user_simulation_params <- function(){
   simulation_params$features_to_use_in_simulation = 1:3
   
   # The total number of layers to use in the offset calcuation (iterating from the start)
-  simulation_params$features_to_use_in_offset_calc = 1:3
+  simulation_params$features_to_use_in_offset_calc = list(1, 3, 1:3)
   
   # what features are targeted by the offset
-  simulation_params$features_to_use_in_offset_intervention = 1:3
+  simulation_params$features_to_use_in_offset_intervention = list(1, 1:3)
   
   # The total number of parcels that will be developed
   simulation_params$total_dev_num = 100
@@ -69,8 +69,7 @@ initialise_user_simulation_params <- function(){
 #   c('net_gains', 'restoration_gains', 'avoided_condition_decline', 'avoided_loss',
 #     'protected_condition', 'current_condition', 'restored_condition')
   
-  simulation_params$offset_action_params = list(c('net_gains', 'restore'), 
-                                                c('avoided_condition_decline', 'maintain'))
+  simulation_params$offset_action_params = list(c('net_gains', 'restore'))
 
   # This is the equivalent of offset_calc_type for the dev parcel. Options
   # are: 'current_condition' - losses are calcuated relative to the value of
@@ -115,7 +114,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$offset_bank_type = c('credit') #c('parcel_set', 'credit')     
   
   # The time horizon in which the offset gains need to equal the devlopment impact
-  simulation_params$offset_time_horizon = list(15)
+  simulation_params$offset_time_horizon = list(20)
   
   # Include illegal clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
@@ -177,7 +176,9 @@ initialise_user_simulated_ecology_params <- function(){
   # value to sample from
   simulated_ecology_params$max_initial_eco_val = 90
   
+  # what proportion of cells are occupied for each feature
   simulated_ecology_params$occupation_ratio = list(0.80, 0.5, 0.2) 
+  
   # Mow much initial variation in pixels per land parcel (this is the width of
   # uniform dist) used to add noise to each pixel. Eg if the pixel has a vlaue
   # of 35, a new value will be sampled from between 35-45
@@ -199,6 +200,7 @@ initialise_user_plot_params <- function(){
   plot_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
   plot_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
   plot_params$realisation_num = 1 # 'all' or number to plot
+  plot_params$features_to_plot = 1:3
   plot_params$write_pdf = FALSE
   plot_params$sets_to_plot = 5 # example site to plot
   plot_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
@@ -222,15 +224,13 @@ initialise_user_plot_params <- function(){
   plot_params$nx = 3 
   plot_params$ny = 4
   
-  plot_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(plot_params$scenario_vec))
-  plot_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(plot_params$scenario_vec))
-  plot_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(plot_params$scenario_vec))
+  plot_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), max(plot_params$features_to_plot))
+  plot_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), max(plot_params$features_to_plot))
+  plot_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), max(plot_params$features_to_plot))
   
-  plot_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), length(plot_params$scenario_vec))
-  plot_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), length(plot_params$scenario_vec)) 
-  plot_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), length(plot_params$scenario_vec))
-  
-  
+  plot_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), max(plot_params$features_to_plot))
+  plot_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), max(plot_params$features_to_plot))
+  plot_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), max(plot_params$features_to_plot))
   
   return(plot_params)
 }
