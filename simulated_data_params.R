@@ -32,13 +32,13 @@ initialise_user_simulation_params <- function(){
   simulation_params$features_to_use_in_simulation = 1:3
   
   # The total number of layers to use in the offset calcuation (iterating from the start)
-  simulation_params$features_to_use_in_offset_calc = 1 #list(1, 3, 1:3)
+  simulation_params$features_to_use_in_offset_calc = list(1, 3, 1:3)
   
   # what features are targeted by the offset
-  simulation_params$features_to_use_in_offset_intervention = 1 #list(1, 1:3)
+  simulation_params$features_to_use_in_offset_intervention = list(1, 1:3)
   
   # The total number of parcels that will be developed
-  simulation_params$total_dev_num = 100
+  simulation_params$total_dev_num = 500
   
   # The time step at which development starts
   simulation_params$dev_start = 1
@@ -87,31 +87,6 @@ initialise_user_simulation_params <- function(){
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
   simulation_params$development_selection_type = 'random'  
-  
-  # Whether to use banking. FALSE - means perform offsets simultaneously with development, TRUE -
-  # means perform offset banking prior to development according to offset bank
-  # parameters
-  simulation_params$use_offset_bank = c(FALSE)
-  
-  # The time at which the offset in the bank offsets are first are implemented and start acurring grains, 
-  simulation_params$offset_bank_start = 1 
-  
-  # The time at which no more offsets are added to the bank. The number of
-  # offsets per time step is determined as follows: First the mean number
-  # number per time step is determined, then sampling is done around this
-  # mean number using a normal distribution such that the total number of
-  # developments will always equal the total number (Note sd for this
-  # distribution is set in the code the currently isn't user settable)
-  simulation_params$offset_bank_end = 1 
-  
-  # THe number parcels to include in banking scheme. These are randomly selected.
-  simulation_params$offset_bank_num = 200 
-  
-  # Options are 'credit' or 'parcel_set'. 'credit' means there is accumulated
-  # gain that is subtracted as parcels are developed. 'parcel_set' one or more
-  # parcels in the bank are traded for one development site. If there is left
-  # over credit (and allow_developments_from_credit is set to TRUE) then this excess credit is used on subsequent developments
-  simulation_params$offset_bank_type = c('credit') #c('parcel_set', 'credit')     
   
   # The time horizon in which the offset gains need to equal the devlopment impact
   simulation_params$offset_time_horizon = list(20)
