@@ -90,7 +90,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$development_selection_type = 'random'  
   
   # The time horizon in which the offset gains need to equal the devlopment impact
-  simulation_params$offset_time_horizon = list(20)
+  simulation_params$offset_time_horizon = 20
   
   # Include stochastic clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
@@ -99,12 +99,12 @@ initialise_user_simulation_params <- function(){
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_potential_developments_in_offset_calc = list(TRUE)
+  simulation_params$include_potential_developments_in_offset_calc = TRUE
   
   # Include future stochastic developments in calculating contribution of avoided losses
   # to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_stochastic_loss_in_offset_calc = list(TRUE)
+  simulation_params$include_stochastic_loss_in_offset_calc = TRUE
   
   simulation_params$dev_counterfactual_adjustment = 'as_offset'
   # The development impacts is multiplied by this factor (irrespective of how
@@ -173,22 +173,22 @@ initialise_user_simulated_ecology_params <- function(){
 initialise_user_plot_params <- function(){
   plot_params = list()
   plot_params$output_plot_folder = vector()
-  plot_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
+  plot_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
   plot_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
   plot_params$realisation_num = 1 # 'all' or number to plot
   plot_params$features_to_plot = 1:3
   plot_params$write_pdf = FALSE
-  plot_params$sets_to_plot = 5 # example site to plot
-  plot_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  plot_params$sets_to_plot = 50 # example site to plot
+  plot_params$scenario_vec = 1 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   plot_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   plot_params$program_col_vec = c('darkgreen', 'red', 'black') 
   plot_params$cfac_col = 'blue' 
   plot_params$landscape_col = 'black'
   plot_params$lwd_vec = c(3, 0.5)
   
-  plot_params$plot_subset_type = c('dev_calc_type') # 'offset_calc', 'time_horizon'
-  plot_params$plot_subset_param = c('future_condition')
-  
+#   plot_params$plot_subset_type = c('dev_calc_type') # 'offset_calc', 'time_horizon'
+#   plot_params$plot_subset_param = c('future_condition')
+#   
   plot_params$site_impact_lwd = 0.5
   plot_params$site_outcome_lwd_vec = c(0.5)
   plot_params$program_lwd_vec = c(3, 0.5)
@@ -198,7 +198,7 @@ initialise_user_plot_params <- function(){
   
   plot_params$string_width = 3 # how many digits are used to store scenario index and realisation index
   plot_params$nx = 3 
-  plot_params$ny = 4
+  plot_params$ny = 3
   
   plot_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), max(plot_params$features_to_plot))
   plot_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), max(plot_params$features_to_plot))
