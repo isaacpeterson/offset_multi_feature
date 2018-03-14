@@ -168,13 +168,13 @@ initialise_user_simulated_ecology_params <- function(){
 initialise_user_output_params <- function(){
   output_params = list()
   output_params$output_plot_folder = vector()
-  output_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
-  output_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
+  output_params$output_plot = TRUE # ',
+  output_params$plot_type = 'impacts' # set to plot through 'features', 'scenarios' or 'site_sets'
   output_params$realisation_num = 'all' # 'all' or number to plot
   output_params$features_to_plot = 1:3
   output_params$write_pdf = FALSE
   output_params$sets_to_plot = 5 # example site to plot
-  output_params$scenario_vec = 1:7 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
   output_params$cfac_col = 'blue' 
@@ -192,8 +192,8 @@ initialise_user_output_params <- function(){
   output_params$landscape_outcome_lwd_vec = c(3)
   
   output_params$string_width = 3 # how many digits are used to store scenario index and realisation index
-  output_params$nx = 3 
-  output_params$ny = 3
+  output_params$nx = 5 
+  output_params$ny = 6
   
   output_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), max(output_params$features_to_plot))
   output_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), max(output_params$features_to_plot))
