@@ -169,9 +169,6 @@ collate_dynamics <- function(full_dynamics_set, datasheets_to_use, set_index_to_
 
 initialise_user_feature_params <- function(){
   
-  # Construct the static initial landscape 
-  current_author_splines = readRDS('REVISED_Elicitation_CP_Workshop_dkeith_splines.rds')
-  
   feature_params = list()
   # how the feature dynamics are determined
   feature_params$scale_features = FALSE
